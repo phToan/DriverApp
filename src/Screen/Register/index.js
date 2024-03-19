@@ -97,6 +97,7 @@ const Register = () => {
                         valueField={"id"}
                         placeholder={'Giới tính'}
                         onChange={item => setGender(item.id)}
+                        value={gender}
                     />
                     <InputField
                         disable={true}

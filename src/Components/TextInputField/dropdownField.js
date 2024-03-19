@@ -1,4 +1,4 @@
-import { StyleSheet, View } from "react-native";
+import { StyleSheet, View, Text } from "react-native";
 import { Dropdown } from "react-native-element-dropdown";
 
 export const DropdownField = ({
@@ -6,9 +6,15 @@ export const DropdownField = ({
     data,
     labelField,
     valueField,
-    onChange
+    onChange,
+    value
 }) => (
     <View style={styles.dropdown_gender}>
+        {value !== null &&
+            <View style={[{ flexDirection: 'row' }]}>
+                <Text style={[styles.label]}>{placeholder}</Text>
+            </View>
+        }
         <Dropdown
             style={{ width: '100%' }}
             placeholderStyle={styles.textStyle}
@@ -30,8 +36,20 @@ const styles = StyleSheet.create({
         padding: 10,
         marginTop: 20,
         marginBottom: 10,
+
     },
     textStyle: {
         fontSize: 16,
-    }
+    },
+    label: {
+        fontSize: 14,
+        backgroundColor: 'white',
+        paddingHorizontal: 3,
+        position: 'absolute',
+        bottom: 4,
+        left: 10
+    },
+    tranform: {
+        transform: [{ translateX: 10 }, { translateY: -15 }]
+    },
 })
