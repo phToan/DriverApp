@@ -27,7 +27,15 @@ const styles = StyleSheet.create({
         fontSize: 16,
         marginVertical: 3,
         bottom: 7
+    },
+    label1: {
+        fontSize: 16,
+    },
+    blank: {
+        alignItems: 'center',
+        justifyContent: 'center'
     }
+
 })
 
 export const DobField = ({
@@ -36,10 +44,10 @@ export const DobField = ({
 }) => (
     <View style={styles.body}>
         <View>
-            <View style={{ flexDirection: 'row' }}>
-                <Text style={[styles.label, styles.tranform]}>Ngày Sinh</Text>
+            <View style={[{ flexDirection: 'row' }, dob.length == 0 && styles.blank]}>
+                <Text style={[dob.length > 0 ? styles.label : styles.label1, dob.length > 0 && styles.tranform]}>Ngày Sinh</Text>
             </View>
-            <Text style={styles.title}>{dob}</Text>
+            {dob.length > 0 && <Text style={styles.title}>{dob}</Text>}
         </View>
         <TouchableOpacity onPress={onClickCalendar}>
             <AntDesign name='calendar' size={30} color={'darkorange'} />

@@ -22,18 +22,18 @@ const styles = StyleSheet.create({
 })
 
 export const InputField = ({
-    name,
+    value,
     onChangeText,
     disable,
     label,
     validate
 }) => {
-    const [focus, setFocus] = useState(true)
+    const [focus, setFocus] = useState(false)
     const onFocus = () => {
         setFocus(true)
     }
     const onBlur = () => {
-        if (name.length == 0) {
+        if (value.length == 0) {
             setFocus(false)
         }
     }
@@ -44,7 +44,7 @@ export const InputField = ({
             </View>}
             <TextInput
                 style={{ fontSize: 16, bottom: focus ? 9 : 0 }}
-                defaultValue={name}
+                defaultValue={value}
                 placeholderTextColor={'black'}
                 placeholder={focus ? '' : label}
                 onChangeText={(text) => onChangeText(text)}
