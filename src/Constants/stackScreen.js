@@ -3,20 +3,23 @@ import { NameScreen } from './nameScreen';
 import Login from '../Screen/Login';
 import Register from '../Screen/Register';
 import { RegisterPassword } from '../Screen/Register/res_password';
+import BottomTab from '../navigation/bottomTab';
 
-const Stack = createNativeStackNavigator()
+const Stack = createNativeStackNavigator();
 
 export const StackScreen = () => {
     return (
-        <Stack.Navigator screenOptions={{
-            headerShown: false
-        }}>
-            <Stack.Screen name={NameScreen.LOGIN_SCREEN} component={Login} />
+        <Stack.Navigator
+            screenOptions={{
+                headerShown: false,
+            }}
+        >
+            {/* <Stack.Screen name={NameScreen.LOGIN_SCREEN} component={Login} />
             <Stack.Screen name={NameScreen.REGISTER_SCREEN} component={Register} />
-            <Stack.Screen name={NameScreen.REGISTER_PASSWORD_SCREEN} component={RegisterPassword} />
-            {/* <Stack.Screen name='home' component={Home} />
-            <Stack.Screen name='tabbar' component={TabBar} />
-            <Stack.Screen name='history' component={HistoryScreen} />
+            <Stack.Screen name={NameScreen.REGISTER_PASSWORD_SCREEN} component={RegisterPassword} /> */}
+            {/* <Stack.Screen name='home' component={Home} /> */}
+            <Stack.Screen name={NameScreen.BOTTOM_TAB} component={BottomTab} />
+            {/* <Stack.Screen name='history' component={HistoryScreen} />
             <Stack.Screen name='notificationDriver' component={NotificationScreen} />
             <Stack.Screen name='order' component={Order} />
             <Stack.Screen name='others' component={Others} />
@@ -32,5 +35,5 @@ export const StackScreen = () => {
             <Stack.Screen name='editpassword' component={EditPassword} />
             <Stack.Screen name='editprofile' component={EditProfile} /> */}
         </Stack.Navigator>
-    )
-}
+    );
+};
