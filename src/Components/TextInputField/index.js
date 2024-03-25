@@ -1,5 +1,5 @@
-import React, { useState } from "react"
-import { View, Text, TextInput, StyleSheet } from "react-native"
+import React, { useState } from 'react';
+import { View, Text, TextInput, StyleSheet } from 'react-native';
 
 const styles = StyleSheet.create({
     body: {
@@ -9,39 +9,50 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         borderRadius: 10,
         marginBottom: 5,
-        height: 55
+        height: 55,
     },
     tranform: {
-        transform: [{ translateX: 10 }, { translateY: -15 }]
+        transform: [{ translateX: 10 }, { translateY: -'17' }],
     },
     label: {
         fontSize: 14,
         backgroundColor: 'white',
-        paddingHorizontal: 3
-    }
-})
+        paddingHorizontal: 3,
+    },
+});
 
 export const InputField = ({
     value,
     onChangeText,
     disable,
     label,
-    validate
+    validate,
 }) => {
-    const [focus, setFocus] = useState(false)
+    const [focus, setFocus] = useState(false);
     const onFocus = () => {
-        setFocus(true)
-    }
+        setFocus(true);
+    };
     const onBlur = () => {
         if (value.length == 0) {
-            setFocus(false)
+            setFocus(false);
         }
-    }
+    };
     return (
-        <View style={[styles.body, { borderColor: validate ? 'black' : 'red' }]}>
-            {focus && <View style={[{ flexDirection: 'row' }, styles.tranform]}>
-                <Text style={[styles.label, { color: validate ? 'black' : 'red' }]}>{label}</Text>
-            </View>}
+        <View
+            style={[styles.body, { borderColor: validate ? 'black' : 'red' }]}
+        >
+            {focus && (
+                <View style={[{ flexDirection: 'row' }, styles.tranform]}>
+                    <Text
+                        style={[
+                            styles.label,
+                            { color: validate ? 'black' : 'red' },
+                        ]}
+                    >
+                        {label}
+                    </Text>
+                </View>
+            )}
             <TextInput
                 style={{ fontSize: 16, bottom: focus ? 9 : 0 }}
                 defaultValue={value}
@@ -53,5 +64,5 @@ export const InputField = ({
                 editable={disable}
             />
         </View>
-    )
-}
+    );
+};

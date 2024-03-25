@@ -1,56 +1,56 @@
-import { StyleSheet } from "react-native"
+import { StyleSheet } from 'react-native';
 export const styles = StyleSheet.create({
     header: {
-        height: 250
+        height: 250,
     },
     body: {
         flex: 3,
-        padding: 10
+        padding: 10,
     },
     or: {
         fontSize: 16,
         textAlign: 'center',
         marginTop: 10,
-        marginBottom: 20
+        marginBottom: 20,
     },
     register: {
         marginHorizontal: 120,
-        marginBottom: 200
+        marginBottom: 200,
     },
     text_title: {
         fontSize: 25,
         textAlign: 'center',
         marginTop: 20,
         color: 'orange',
-        fontWeight: 'bold'
+        fontWeight: 'bold',
     },
     t_forget_pass: {
         fontSize: 16,
         marginVertical: 20,
         color: 'orange',
-        textAlign: 'center'
+        textAlign: 'center',
     },
     t_question: {
         fontSize: 16,
         textAlign: 'center',
         marginTop: 30,
-        marginBottom: 10
+        marginBottom: 10,
     },
     b_other_login: {
         flexDirection: 'row',
         borderBottomWidth: 0.5,
         marginHorizontal: 80,
-        justifyContent: 'center'
+        justifyContent: 'center',
     },
     t_register: {
         fontSize: 20,
         textAlign: 'center',
-        color: 'orange'
+        color: 'orange',
     },
     image: {
         width: 50,
         height: 50,
-        marginHorizontal: 10
+        marginHorizontal: 10,
     },
     icon: {
         marginTop: 50,
@@ -61,7 +61,7 @@ export const styles = StyleSheet.create({
         borderRadius: 20,
         paddingVertical: 10,
         paddingHorizontal: 80,
-        marginVertical: 5
+        marginVertical: 5,
     },
     TextInput: {
         width: '80%',
@@ -75,7 +75,7 @@ export const styles = StyleSheet.create({
     row: {
         paddingTop: 10,
         flexDirection: 'row',
-        flex: 1
+        flex: 1,
     },
     element: {
         flex: 1,
@@ -85,7 +85,7 @@ export const styles = StyleSheet.create({
         marginBottom: 8,
         marginHorizontal: 20,
         paddingLeft: 10,
-        color: 'black'
+        color: 'black',
     },
     text_element: {
         fontSize: 18,
@@ -94,12 +94,12 @@ export const styles = StyleSheet.create({
         paddingBottom: 10,
         borderBottomWidth: 1,
         marginHorizontal: 20,
-        paddingLeft: 10
+        paddingLeft: 10,
     },
     textMessage: {
         color: 'red',
         marginLeft: 20,
-        marginTop: 5
+        marginTop: 5,
     },
     _input: {
         flexDirection: 'row',
@@ -108,6 +108,5 @@ export const styles = StyleSheet.create({
         borderBottomWidth: 1,
         padding: 10,
         width: '90%',
-
     },
-})
+});

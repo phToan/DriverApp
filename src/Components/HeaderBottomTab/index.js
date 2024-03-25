@@ -1,9 +1,9 @@
 import Icon from 'react-native-vector-icons/Entypo';
-import AppContext from '../../../Context';
-import React from 'react';
+import AppContext from '../../Context';
+import React, { memo } from 'react';
 import { View, Text, TouchableOpacity } from 'react-native';
 
-const Header = () => {
+const HeaderBottomTab = memo(() => {
     const { lightDot, toggleLightDot } = React.useContext(AppContext);
     return (
         <View
@@ -45,6 +45,6 @@ const Header = () => {
             </TouchableOpacity>
         </View>
     );
-};
+});
 
-export default Header;
+export default HeaderBottomTab;

@@ -1,14 +1,14 @@
-import { Text, View } from 'react-native';
-import React, { Component } from 'react';
+import React from 'react';
+import { HistoryTab } from '../../navigation/topTab';
+import HeaderBottomTab from '../../Components/HeaderBottomTab';
 
-export class History extends Component {
-    render() {
-        return (
-            <View>
-                <Text>History</Text>
-            </View>
-        );
-    }
-}
+const HistoryScreen = () => {
+    return (
+        <React.Fragment>
+            <HeaderBottomTab />
+            <HistoryTab />
+        </React.Fragment>
+    );
+};
 
-export default History;
+export default HistoryScreen;

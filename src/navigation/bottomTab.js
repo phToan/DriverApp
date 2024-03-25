@@ -14,6 +14,10 @@ const BottomTab = () => {
         <Tab.Navigator
             screenOptions={{
                 tabBarActiveTintColor: 'orange',
+                tabBarStyle: {
+                    height: '9%',
+                    // paddingBottom: 5,
+                },
                 headerShown: false,
                 tabBarLabelStyle: {
                     fontSize: 14,
