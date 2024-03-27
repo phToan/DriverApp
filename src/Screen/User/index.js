@@ -13,6 +13,7 @@ import HeaderBottomTab from '../../Components/HeaderBottomTab';
 import { GirlIcon, ManIcon } from '../../assets/images';
 import { TextFont } from '../../Components/Text';
 import { OptionItem } from './components/optionItem';
+import { NameScreen } from '../../Constants/nameScreen';
 
 const Others = () => {
     const navigation = useNavigation();
@@ -34,13 +35,13 @@ const Others = () => {
         imageSource = GirlIcon;
     }
     const onClickUserAccount = () => {
-        navigation.navigate('userAccount');
+        navigation.navigate(NameScreen.ACCOUNT_SCREEN);
     };
     const onClickLogOut = () => {
         navigation.popToTop();
     };
     return (
-        <SafeAreaView style={styles.container}>
+        <View style={styles.container}>
             <HeaderBottomTab />
             <TouchableOpacity
                 style={styles.header}
@@ -90,7 +91,7 @@ const Others = () => {
                     />
                 </View>
             </ScrollView>
-        </SafeAreaView>
+        </View>
     );
 };
 

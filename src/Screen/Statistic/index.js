@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
     View,
     SafeAreaView,
@@ -7,9 +7,10 @@ import {
     StyleSheet,
     ScrollView,
 } from 'react-native';
+import { useIsFocused } from '@react-navigation/native';
 import HeaderBottomTab from '../../Components/HeaderBottomTab';
 import { format } from 'date-fns';
-import Chart from './components/chart';
+import { Chart } from './components/chart';
 import { instance } from '../../Api/instance';
 import TimeReminder from './components/timerRender';
 import dayjs from 'dayjs';
@@ -18,12 +19,12 @@ import color from '../../assets/color';
 import { TextFont } from '../../Components/Text';
 
 const Statistics = () => {
-    const [selectedDate, setSelectedDate] = React.useState(null);
-    const [sum, setSum] = React.useState(0);
-    const [completeOr, setcompleteOr] = React.useState(0);
-    const [income, setIncome] = React.useState(0);
-    const [display, setDisplay] = React.useState(false);
-    const [date, setDate] = React.useState('');
+    const isFocus = useIsFocused();
+    const [selectDate, setSelectDate] = useState(dayjs().startOf('day'));
+    const [sum, setSum] = useState(0);
+    const [completeOrder, setCompleteOrder] = useState(0);
+    const [income, setIncome] = useState(0);
+    const [date, setDate] = useState('');
 
     const fetchData = async (Day) => {
         await instance
@@ -41,7 +42,7 @@ const Statistics = () => {
                     }
                 });
                 setIncome(price);
-                setcompleteOr(count);
+                setCompleteOrder(count);
                 setSum(res.data.data.count);
             })
             .catch((err) => {
@@ -49,25 +50,31 @@ const Statistics = () => {
             });
     };
 
-    React.useEffect(() => {
-        var ngayHienTai = new Date();
-        var ngay = ngayHienTai.getDate();
-        var thang = ngayHienTai.getMonth() + 1;
-        var nam = ngayHienTai.getFullYear();
-        const date = 2023 + '-' + '0' + 8 + '-' + ngay;
-        fetchData('2023-09-16');
-        setDisplay(true);
-        setDate(16 + '/' + '0' + thang + '/' + nam);
-    }, []);
+    useEffect(() => {
+        if (isFocus) {
+            fetchData('2023-09-16');
+            setDate(
+                selectDate.date() +
+                    '/' +
+                    (selectDate.month() + 1) +
+                    '/' +
+                    selectDate.year()
+            );
+        }
+    }, [isFocus]);
 
-    const [selectDate, setSelectDate] = useState(dayjs().startOf('day'));
-    const [pickDateModalVisible, setPickDateModalVisible] = useState(false);
     const onSelectDate = (date) => {
         setSelectDate(date.startOf('day'));
-        console.log('date: ', date);
+        setDate(
+            date.startOf('day').date() +
+                '/' +
+                (date.startOf('day').month() + 1) +
+                '/' +
+                date.startOf('day').year()
+        );
     };
     return (
-        <SafeAreaView style={{ flex: 1, backgroundColor: 'white' }}>
+        <View style={{ flex: 1, backgroundColor: 'white' }}>
             <HeaderBottomTab />
             <View style={{ padding: 10 }}>
                 <TimeReminder
@@ -78,7 +85,10 @@ const Statistics = () => {
 
             <ScrollView showsVerticalScrollIndicator={false}>
                 <View style={styles.body}>
-                    <Chart text={sum} percentage={(completeOr / sum) * 100} />
+                    <Chart
+                        text={sum}
+                        percentage={sum > 0 ? (completeOrder / sum) * 100 : 0}
+                    />
                     {sum > 0 && (
                         <>
                             <View
@@ -89,20 +99,20 @@ const Statistics = () => {
                             >
                                 <Item
                                     title={'Số đơn hoàn thành: '}
-                                    content={completeOr}
+                                    content={completeOrder}
                                     color={color.GoodStatusGreen}
                                     backgroundColor={color.BackgroundGreen}
                                 />
                                 <Item
                                     title={'Số đơn bị hủy:'}
-                                    content={sum - completeOr}
+                                    content={sum - completeOrder}
                                     color={color.Red}
                                     backgroundColor={color.BackgroundRed}
                                 />
                                 <Item
                                     title={'Tỷ lệ thành công :'}
                                     content={`${(
-                                        (completeOr / sum) *
+                                        (completeOrder / sum) *
                                         100
                                     ).toFixed(2)}%`}
                                     color={color.DarkOrange}
@@ -131,24 +141,13 @@ const Statistics = () => {
                         </>
                     )}
                 </View>
-                {selectedDate && (
-                    <View style={styles.selectedDateContainer}>
-                        <Text style={styles.selectedDateText}>
-                            Thống kê trong ngày:{' '}
-                            {format(selectedDate, 'dd/MM/yyyy')}
-                        </Text>
-                    </View>
-                )}
-
-                {display ? (
-                    <View style={styles.selectedDateContainer}>
-                        <Text style={styles.selectedDateText}>
-                            Thống kê trong ngày: {date}
-                        </Text>
-                    </View>
-                ) : null}
+                <View style={styles.selectedDateContainer}>
+                    <Text style={styles.selectedDateText}>
+                        Thống kê trong ngày: {date}
+                    </Text>
+                </View>
             </ScrollView>
-        </SafeAreaView>
+        </View>
     );
 };
 
@@ -156,7 +155,6 @@ export default Statistics;
 
 const styles = StyleSheet.create({
     body: {
-        // flex: 5,
         alignItems: 'center',
         marginTop: 20,
     },

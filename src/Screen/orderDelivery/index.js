@@ -121,6 +121,7 @@ const OrderDelivery = ({ navigation, route }) => {
                     const location = data.results[0].geometry.location;
                     setLatitude(location.lat);
                     setLongitude(location.lng);
+                    console.log(`llll: ${location.lat},${location.lng}`);
                     setRegion({
                         latitude: location.lat,
                         longitude: location.lng,

@@ -74,7 +74,7 @@ export const styles = StyleSheet.create({
         gap: '10%',
     },
     map: {
-        height: 170,
+        height: 1000,
         backgroundColor: 'white',
         marginTop: 10,
         borderColor: 'darkorange',

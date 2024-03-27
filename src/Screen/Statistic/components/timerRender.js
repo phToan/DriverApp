@@ -8,7 +8,7 @@ import {
 } from 'react-native';
 import { TextFont } from '../../../Components/Text';
 import { styles } from './styles';
-import { useEffect, useRef, useState } from 'react';
+import { memo, useEffect, useRef, useState } from 'react';
 import { MaterialCommunityIcons } from '../../../assets/icon';
 
 import dayjs from 'dayjs';
@@ -151,4 +151,4 @@ const TimeReminder = ({ currentDay, onSelectDate }) => {
         </>
     );
 };
-export default TimeReminder;
+export default memo(TimeReminder);

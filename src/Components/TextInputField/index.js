@@ -27,8 +27,9 @@ export const InputField = ({
     disable,
     label,
     validate,
+    isLabel,
 }) => {
-    const [focus, setFocus] = useState(false);
+    const [focus, setFocus] = useState(isLabel);
     const onFocus = () => {
         setFocus(true);
     };

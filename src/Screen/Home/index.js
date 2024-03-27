@@ -108,7 +108,7 @@ const Home = ({ navigation }) => {
     );
 
     return (
-        <SafeAreaView
+        <View
             style={[
                 styles.component,
                 {
@@ -137,7 +137,7 @@ const Home = ({ navigation }) => {
                     <Text>Hãy chuyển sang chế độ Trực tuyến để nhận đơn</Text>
                 </View>
             )}
-        </SafeAreaView>
+        </View>
     );
 };
 

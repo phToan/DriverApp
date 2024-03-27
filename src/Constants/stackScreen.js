@@ -9,6 +9,9 @@ import OrderInfo from '../Screen/OrderInfo';
 import OrderTaken from '../Screen/orderTaken';
 import OrderDelivery from '../Screen/orderDelivery';
 import WatchDetailScreen from '../Screen/orderDetail';
+import UserAccount from '../Screen/Account';
+import EditProfile from '../Screen/Account/EditProfile';
+import EditPassword from '../Screen/Account/EditPassword';
 
 const Stack = createNativeStackNavigator();
 
@@ -48,6 +51,18 @@ export const StackScreen = () => {
             <Stack.Screen
                 name={NameScreen.WATCH_DETAIL_SCREEN}
                 component={WatchDetailScreen}
+            />
+            <Stack.Screen
+                name={NameScreen.ACCOUNT_SCREEN}
+                component={UserAccount}
+            />
+            <Stack.Screen
+                name={NameScreen.EDIT_PROFILE_SCREEN}
+                component={EditProfile}
+            />
+            <Stack.Screen
+                name={NameScreen.EDIT_PASSWORD_SCREEN}
+                component={EditPassword}
             />
             {/* <Stack.Screen name='history' component={HistoryScreen} />
             <Stack.Screen name='notificationDriver' component={NotificationScreen} />

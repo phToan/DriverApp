@@ -40,7 +40,7 @@ const NotificationScreen = () => {
         alert('ID: ' + item.id + ' value:  ' + item.value);
     };
     return (
-        <SafeAreaView style={styles.container}>
+        <View style={styles.container}>
             <HeaderBottomTab />
             <View style={styles.header}>
                 <ItemNotice
@@ -68,7 +68,7 @@ const NotificationScreen = () => {
                     ItemSeparatorComponent={() => <ItemSeparator />}
                 />
             </View>
-        </SafeAreaView>
+        </View>
     );
 };
 

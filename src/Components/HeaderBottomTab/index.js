@@ -1,20 +1,17 @@
 import Icon from 'react-native-vector-icons/Entypo';
 import AppContext from '../../Context';
-import React, { memo } from 'react';
+import React, { memo, useContext } from 'react';
 import { View, Text, TouchableOpacity } from 'react-native';
 
 const HeaderBottomTab = memo(() => {
-    const { lightDot, toggleLightDot } = React.useContext(AppContext);
+    const { lightDot, toggleLightDot } = useContext(AppContext);
     return (
         <View
             style={{
                 height: 100,
                 backgroundColor: lightDot ? '#fff1d6' : '#c2bdbd',
                 justifyContent: 'flex-end',
-                paddingBottom: 10,
                 alignItems: 'flex-end',
-                paddingEnd: 20,
-                // flex: 1
             }}
         >
             <TouchableOpacity
@@ -24,6 +21,7 @@ const HeaderBottomTab = memo(() => {
                     borderRadius: 20,
                     alignItems: 'center',
                     width: '40%',
+                    margin: 10,
                 }}
                 onPress={toggleLightDot}
             >

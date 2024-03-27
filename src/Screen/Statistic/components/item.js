@@ -1,7 +1,8 @@
 import { StyleSheet, View } from 'react-native';
 import { TextFont } from '../../../Components/Text';
+import { memo } from 'react';
 
-export const Item = ({ title, content, color, backgroundColor }) => (
+export const Item = memo(({ title, content, color, backgroundColor }) => (
     <View
         style={[
             styles.body,
@@ -13,7 +14,7 @@ export const Item = ({ title, content, color, backgroundColor }) => (
         <TextFont title={title} fs={18} color={color} fw={'bold'} />
         <TextFont title={content} fs={18} color={color} fw={'bold'} />
     </View>
-);
+));
 
 const styles = StyleSheet.create({
     body: {
